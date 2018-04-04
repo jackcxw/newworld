@@ -1,0 +1,76 @@
+{extend name="layout" /}
+{block name="title"}关于小编{/block}
+<!--script for this page-->
+{block name="main"}
+<section id="main-content">
+    <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i>小编信息</h3>
+
+        <!-- BASIC FORM ELELEMNTS -->
+        <div class="row mt">
+            <div class="col-lg-12">
+                <div class="form-panel">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i> 小编信息</h4>
+                    <form class="form-horizontal style-form" method="post" id="myform" action="/admin/aboutme">
+                        <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">姓名：</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  id="truename" name="truename"  value="{$user.truename?$user.truename:'请输入姓名'}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">年龄：</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control"  id="age" name="age" value="{$user.age?$user.age:'18'}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">邮箱：</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control round-form"   id="email" name="email" value="{$user.email?$user.email:'请输入邮箱'}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 col-sm-2 control-label">个人说明：</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control round-form" id="say" name="say" >
+                                    {$user.say?$user.say:'请输入。。。'}
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <button type="button" class="btn btn-theme" onclick="upform()" >提交</button>
+                            </div>
+                        </div>
+    </section><! --/wrapper -->
+</section>
+<script>
+    function upform()
+    {
+        var truename = document.getElementById("truename").value;
+        var age = document.getElementById("age").value;
+        var email = document.getElementById("email").value;
+        var say = document.getElementById("say").value;
+        if(!truename){
+            alert("请填入真实姓名");
+            return false;
+        }
+        if(!age){
+            alert("请填入年龄");
+            return false;
+        }
+        if(!email){
+            alert("请填入邮箱");
+            return false;
+        }
+        if(!say){
+            alert("请填入个人说明");
+            return false;
+        }
+        document.getElementById("myform").submit();
+    }
+</script>
+{/block}
+</body>
+</html>
